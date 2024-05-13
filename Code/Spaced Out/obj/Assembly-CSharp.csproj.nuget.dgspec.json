@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/oscarchilds/Documents/CODE/Level2Project/Code/Spaced Out/Assembly-CSharp.csproj": {}
+  },
+  "projects": {
+    "/Users/oscarchilds/Documents/CODE/Level2Project/Code/Spaced Out/Assembly-CSharp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/oscarchilds/Documents/CODE/Level2Project/Code/Spaced Out/Assembly-CSharp.csproj",
+        "projectName": "Assembly-CSharp",
+        "projectPath": "/Users/oscarchilds/Documents/CODE/Level2Project/Code/Spaced Out/Assembly-CSharp.csproj",
+        "packagesPath": "/Users/oscarchilds/.nuget/packages/",
+        "outputPath": "/Users/oscarchilds/Documents/CODE/Level2Project/Code/Spaced Out/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/oscarchilds/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
