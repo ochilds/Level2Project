@@ -4,15 +4,64 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Controls controller;
+    public Rigidbody myRigidBody;
+    public Camera playerCamera;
+    Vector2 cubeRotation;
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Enable control scheme
+        controller = new Controls();
+        controller.Gameplay.Enable();
+        // Reset internal cube rotation
+        cubeRotation = new Vector2(0, 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate() 
     {
-        
+        // Get move vector and call MovePlayer with that vector
+        Vector2 moveInputVector = controller.Gameplay.Move.ReadValue<Vector2>();
+        MovePlayer(moveInputVector);
+        // Snap camera to player
+        playerCamera.transform.position = transform.position;
+        // Get camera rotate vector and call RotateCamera with that vector
+        Vector2 inputRotateVector = controller.Gameplay.MoveCamera.ReadValue<Vector2>();
+        RotateCamera(inputRotateVector);
+    }
+
+    private void MovePlayer(Vector2 MoveAmount)
+    {
+        // Set force multiplier (Could change)
+        float force = 10f;
+        // Rotate the move vector to face to correct way
+        MoveAmount = rotateVector2(MoveAmount, -cubeRotation.y);
+        // Add the force to rigid body
+        myRigidBody.AddForce(new Vector3(force * MoveAmount.x, 0, force * MoveAmount.y));
+    }
+
+    private void RotateCamera(Vector2 RotateAmount)
+    {
+        // Check so camera doesn't move outside limits
+        if (!(cubeRotation.x <= 90 && cubeRotation.x - RotateAmount.y > 90) && !(cubeRotation.x >= -90 && cubeRotation.x - RotateAmount.y < -90))
+        {
+            // Rotate both x and y (Done in this order and way to stop weird rotation problems)
+            playerCamera.transform.Rotate(new Vector3(-RotateAmount.y, 0, 0), Space.Self);
+            playerCamera.transform.Rotate(new Vector3(0, RotateAmount.x, 0), Space.World);
+            // Rotate player around the y axis for movement purposes
+            transform.Rotate(new Vector3(0, RotateAmount.x, 0), Space.Self);
+            // Update internal cube rotation
+            cubeRotation += new Vector2(-RotateAmount.y, RotateAmount.x);
+        }
+    }
+
+    public Vector2 rotateVector2(Vector2 v, float delta) {
+        // Convert the angle into radians
+        delta *= Mathf.Deg2Rad;
+        // Use matrix multiplication to rotate the vector the specified amount
+        return new Vector2(
+            v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
+            v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
+        );
     }
 }
