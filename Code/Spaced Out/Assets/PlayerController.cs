@@ -24,14 +24,20 @@ public class PlayerController : MonoBehaviour
         state = "Grounded";
         // Hide and centre cursor
         Cursor.lockState = CursorLockMode.Locked;
+        // Subscribe Punch method for when left click is pressed
+        controller.Gameplay.Punch.performed += Punch;
+    }
+
+    private void Update() {
+        // Snap camera to player
+        // Do this in Update instead of FixedUpdate to avoid jitters
+        playerCamera.transform.position = transform.position + new Vector3(0, 0.45f, 0);
     }
 
     private void FixedUpdate() {
         // Get move vector and call MovePlayer with that vector
         Vector2 moveInputVector = controller.Gameplay.Move.ReadValue<Vector2>();
         MovePlayer(moveInputVector);
-        // Snap camera to player
-        playerCamera.transform.position = transform.position + new Vector3(0, 0.45f, 0);
         // Get camera rotate vector and call RotateCamera with that vector
         Vector2 inputRotateVector = controller.Gameplay.MoveCamera.ReadValue<Vector2>();
         RotateCamera(inputRotateVector);
@@ -78,6 +84,17 @@ public class PlayerController : MonoBehaviour
         if (state == "Grounded") {
             // Add up force with jump force to rigidbody
             myRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Acceleration);
+        }
+    }
+
+    public void Punch(InputAction.CallbackContext context) {
+        // Raycast forward
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 3f)) {
+            // if raycast hits object that can break call break on that object
+            if (hit.transform.gameObject.TryGetComponent<ItemBreakingLogic>(out ItemBreakingLogic logic)) {
+                logic.Break();
+            }
         }
     }
 

@@ -56,7 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/PlayerController.cs" />
+    <Compile Include="Assets/ItemPickupLogic.cs" />
     <Compile Include="Assets/Controls.cs" />
+    <Compile Include="Assets/ItemBreakingLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
