@@ -20,9 +20,9 @@ public class ItemBreakingLogic : MonoBehaviour
     void FixedUpdate() {
         // If strength is 0 or below spawn item with correct amount and destroy
         if (strength <= 0) {
-            GameObject item = Instantiate(itemToDrop);
+            GameObject item = Instantiate(itemToDrop, transform.position, transform.rotation);
             item.GetComponent<ItemPickupLogic>().amount = amountToDrop;
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

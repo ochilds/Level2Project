@@ -7,13 +7,15 @@ public class InventorySystem : MonoBehaviour
 {
     public int[,] inventory = { { 0, 0, }, { 0, 0, }, { 0, 0, }, { 0, 0, }, { 0, 0, }, };
     public GameObject inventoryWood;
+    public GameObject inventoryStone;
     public Dictionary<int,GameObject> inventoryItems = new Dictionary<int, GameObject>();
     public GameObject uiInventory;
     public GameObject[] slots;
 
     private void Start() {
-        // Add wood the the dictionary
+        // Add GameObjects to the dictionary
         inventoryItems.Add(1, inventoryWood);
+        inventoryItems.Add(2, inventoryStone);
         // Find all children of the UI object except for the camera and light and add to array
         slots = new GameObject[uiInventory.transform.childCount - 2];
         for (int i = 0; i < uiInventory.transform.childCount - 2;i++) {

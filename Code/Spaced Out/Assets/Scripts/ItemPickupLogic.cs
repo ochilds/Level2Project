@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemPickupLogic : MonoBehaviour
 {
     public float height;
+    public float heightOffset;
     public int amount;
     public GameObject player;
     public int id;
@@ -23,7 +24,9 @@ public class ItemPickupLogic : MonoBehaviour
         height = (Mathf.Sin(Time.timeSinceLevelLoad * 2) + 3) * 0.05f;
         //Find distance between object and floor and adjust position accordinly
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity)) {
-            transform.position = new Vector3(transform.position.x, transform.position.y + (height - hit.distance), transform.position.z);
+            transform.position = new Vector3(transform.position.x, 
+                                            transform.position.y + heightOffset + (height - hit.distance), 
+                                            transform.position.z);
         }
         // Rotate object
         transform.Rotate(0, 0, 2);
