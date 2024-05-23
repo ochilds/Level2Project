@@ -12,6 +12,7 @@ public class ItemPickupLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Set player object
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
