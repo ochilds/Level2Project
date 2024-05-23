@@ -55,10 +55,11 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2022.3.11f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/PlayerController.cs" />
-    <Compile Include="Assets/ItemPickupLogic.cs" />
-    <Compile Include="Assets/Controls.cs" />
-    <Compile Include="Assets/ItemBreakingLogic.cs" />
+    <Compile Include="Assets/Scripts/InventorySystem.cs" />
+    <Compile Include="Assets/Scripts/ItemPickupLogic.cs" />
+    <Compile Include="Assets/Scripts/ItemBreakingLogic.cs" />
+    <Compile Include="Assets/Scripts/PlayerController.cs" />
+    <Compile Include="Assets/Scripts/Controls.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

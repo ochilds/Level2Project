@@ -353,10 +353,11 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.11f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.11f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
-"Assets/Controls.cs"
-"Assets/ItemBreakingLogic.cs"
-"Assets/ItemPickupLogic.cs"
-"Assets/PlayerController.cs"
+"Assets/Scripts/Controls.cs"
+"Assets/Scripts/InventorySystem.cs"
+"Assets/Scripts/ItemBreakingLogic.cs"
+"Assets/Scripts/ItemPickupLogic.cs"
+"Assets/Scripts/PlayerController.cs"
 -langversion:9.0
 
 /deterministic
