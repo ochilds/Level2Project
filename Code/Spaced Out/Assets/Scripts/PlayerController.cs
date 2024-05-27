@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     Vector2 cubeRotation;
     public float jumpForce;
     public string state;
+    public GameObject inventoryUI;
     // Start is called before the first frame update
     void Start() {
         // Enable control scheme
@@ -26,6 +27,9 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         // Subscribe Punch method for when left click is pressed
         controller.Gameplay.Punch.performed += Punch;
+        // Subscribe open/close inventory to correct functions
+        controller.Gameplay.OpenInventory.performed += OpenInventory;
+        controller.Inventory.CloseInventory.performed += CloseInventory;
     }
 
     private void Update() {
@@ -96,6 +100,26 @@ public class PlayerController : MonoBehaviour
                 logic.Break();
             }
         }
+    }
+
+    public void OpenInventory(InputAction.CallbackContext context) {
+        // Make inventory UI visible
+        inventoryUI.SetActive(true);
+        // Switch control map to inventory control
+        controller.Gameplay.Disable();
+        controller.Inventory.Enable();
+        // Make cursor visible
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void CloseInventory(InputAction.CallbackContext context) {
+        // Make inventory UI invisible
+        inventoryUI.SetActive(false);
+        // Switch control map in gameplay
+        controller.Inventory.Disable();
+        controller.Gameplay.Enable();
+        // Hide and centre mouse
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public Vector2 RotateVector2(Vector2 v, float delta) {
