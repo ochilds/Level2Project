@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
         // Subscribe Punch method for when left click is pressed
         controller.Gameplay.Punch.performed += Punch;
         // Subscribe open/close inventory to correct functions
-        controller.Gameplay.OpenInventory.performed += OpenInventory;
-        controller.Inventory.CloseInventory.performed += CloseInventory;
+        // controller.Gameplay.OpenInventory.performed += OpenInventory;
+        // controller.Inventory.CloseInventory.performed += CloseInventory;
     }
 
     private void Update() {
