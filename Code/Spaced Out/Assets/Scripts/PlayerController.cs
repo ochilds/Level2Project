@@ -51,7 +51,11 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateState() {
         // If raycast pointing down collides player if grounded
-        if (Physics.Raycast(transform.position, Vector3.down, 1.1f)) {
+        if (Physics.Raycast(transform.position, Vector3.down, 1.3f) ||
+            Physics.Raycast(transform.position + (Vector3.forward / 2), Vector3.down, 1.3f) ||
+            Physics.Raycast(transform.position + (Vector3.back / 2), Vector3.down, 1.3f) ||
+            Physics.Raycast(transform.position + (Vector3.right / 2), Vector3.down, 1.3f) ||
+            Physics.Raycast(transform.position + (Vector3.left / 2), Vector3.down, 1.3f)) {
             state = "Grounded";
         }
         // Else player is airborne
