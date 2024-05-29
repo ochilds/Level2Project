@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class InventorySystem : MonoBehaviour
 {
     public int[,] inventory = { { 0, 0, }, { 0, 0, }, { 0, 0, }, { 0, 0, }, { 0, 0, }, };
-    public GameObject inventoryWood;
-    public GameObject inventoryStone;
-    public Dictionary<int,GameObject> inventoryItems = new Dictionary<int, GameObject>();
+    public Dictionary<int, GameObject> inventoryItems = new Dictionary<int, GameObject>();
     public GameObject uiInventory;
+    public GameObject inventoryItemStorage;
     public GameObject[] slots;
 
     private void Start() {
-        // Add GameObjects to the dictionary
-        inventoryItems.Add(1, inventoryWood);
-        inventoryItems.Add(2, inventoryStone);
+        // Add all inventory items to the dictionary (Adding one so ID's match)
+        for (int i = 1;i < inventoryItemStorage.transform.childCount + 1;i++) {
+            inventoryItems[i] = inventoryItemStorage.transform.GetChild(i - 1).gameObject;
+        }
         // Find all children of the UI object except for the camera and light and add to array
         slots = new GameObject[uiInventory.transform.childCount - 2];
         for (int i = 0; i < uiInventory.transform.childCount - 2;i++) {
