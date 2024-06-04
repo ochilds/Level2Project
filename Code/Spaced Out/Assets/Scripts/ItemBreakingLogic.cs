@@ -7,7 +7,8 @@ using UnityEngine;
 public class ItemBreakingLogic : MonoBehaviour
 {
     public GameObject itemToDrop;
-    public int amountToDrop;
+    public int minAmountToDrop;
+    public int maxAmountToDrop;
     public String correctTool;
     public int hardness;
     public int strength;
@@ -18,10 +19,10 @@ public class ItemBreakingLogic : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate() {
-        // If strength is 0 or below spawn item with correct amount and destroy
+        // If strength is 0 or below spawn item with random amount within range and destroy
         if (strength <= 0) {
             GameObject item = Instantiate(itemToDrop, transform.position, transform.rotation);
-            item.GetComponent<ItemPickupLogic>().amount = amountToDrop;
+            item.GetComponent<ItemPickupLogic>().amount = UnityEngine.Random.Range(minAmountToDrop, maxAmountToDrop);
             Destroy(gameObject);
         }
     }

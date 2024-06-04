@@ -103,7 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToDrop: {fileID: 7497436004079968660, guid: 18059a3ad6f8d49059d8741752536ece, type: 3}
-  amountToDrop: 4
+  minAmountToDrop: 2
+  maxAmountToDrop: 4
   correctTool: 
   hardness: 9
   strength: 9
