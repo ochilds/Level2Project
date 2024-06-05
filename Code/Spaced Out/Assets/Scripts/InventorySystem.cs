@@ -29,9 +29,11 @@ public class InventorySystem : MonoBehaviour
         for (int i = 0;i < inventory.GetLength(0);i++) {
             // If it holds an item
             if (inventory[i,0] != 0) {
-                // Get the corresponding GameObject and instantiate as child of correct UI slot
-                GameObject slotObject = inventoryItems[inventory[i,0]];
-                Instantiate(slotObject, slots[i].transform);
+                // Get the corresponding GameObject and instantiate as child of correct UI slot if no game object already exists
+                if (slots[i].transform.childCount == 1) {
+                    GameObject slotObject = inventoryItems[inventory[i,0]];
+                    Instantiate(slotObject, slots[i].transform);
+                }
                 // Set text to correct amount
                 slots[i].transform.GetChild(0).GetComponent<TextMesh>().text = inventory[i,1].ToString();
             }
