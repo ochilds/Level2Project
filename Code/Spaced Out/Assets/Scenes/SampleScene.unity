@@ -532,6 +532,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101815710}
   m_CullTransparentMesh: 1
+--- !u!1 &108944982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108944983}
+  m_Layer: 0
+  m_Name: Particles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108944983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108944982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -88.183395, y: -107.12616, z: -99.50308}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &113620455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3090,6 +3121,7 @@ MonoBehaviour:
   moveForce: 150
   state: 
   inventoryUI: {fileID: 1224563119}
+  jumpTime: 0
 --- !u!54 &953245597
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7938,4 +7970,5 @@ SceneRoots:
   - {fileID: 925314954}
   - {fileID: 1769518693}
   - {fileID: 2097300883}
+  - {fileID: 108944983}
   - {fileID: 1167950384}

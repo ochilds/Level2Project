@@ -12,6 +12,10 @@ public class ItemBreakingLogic : MonoBehaviour
     public String correctTool;
     public int hardness;
     public int strength;
+    public int shakeLength;
+    public int shakeTimer;
+    public Vector3 toMove = Vector3.zero;
+    public GameObject breakParticle;
     private void Start() {
         // Set strength to base hardness
         strength = hardness;
@@ -19,6 +23,15 @@ public class ItemBreakingLogic : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate() {
+        transform.position -= toMove;
+        toMove = Vector3.zero;
+        if (shakeTimer > 0) {
+            toMove = new Vector3(UnityEngine.Random.Range(-0.03f, 0.03f), 
+                                 0, 
+                                 UnityEngine.Random.Range(-0.03f, 0.03f));
+            transform.position += toMove;
+            shakeTimer -= 1;
+        }
         // If strength is 0 or below spawn item with random amount within range and destroy
         if (strength <= 0) {
             GameObject item = Instantiate(itemToDrop, transform.position, transform.rotation);
@@ -27,8 +40,10 @@ public class ItemBreakingLogic : MonoBehaviour
         }
     }
 
-    public void Break() {
+    public void Break(Vector3 position, Vector3 rotation) {
         // Decrease strength by 1
         strength -= 1;
+        shakeTimer = shakeLength;
+        Instantiate(breakParticle, position, Quaternion.Euler(rotation));
     }
 }

@@ -138,7 +138,8 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, 3f)) {
             // if raycast hits object that can break call break on that object
             if (hit.transform.gameObject.TryGetComponent<ItemBreakingLogic>(out ItemBreakingLogic logic)) {
-                logic.Break();
+                Debug.Log(playerCamera.transform.forward);
+                logic.Break(hit.point, playerCamera.transform.forward);
             }
         }
     }
