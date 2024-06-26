@@ -360,6 +360,8 @@
 "Assets/Scripts/ItemBreakingLogic.cs"
 "Assets/Scripts/ItemPickupLogic.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/TextboxSystem.cs"
+"Assets/Scripts/TypingSystem.cs"
 -langversion:9.0
 
 /deterministic

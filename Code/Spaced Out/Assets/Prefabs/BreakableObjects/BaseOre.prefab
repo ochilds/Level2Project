@@ -108,3 +108,7 @@ MonoBehaviour:
   correctTool: 
   hardness: 9
   strength: 9
+  shakeLength: 5
+  shakeTimer: 0
+  toMove: {x: 0, y: 0, z: 0}
+  breakParticle: {fileID: 1862094614604079771, guid: 246a47f3121824bae9b1dfb06487d224, type: 3}
