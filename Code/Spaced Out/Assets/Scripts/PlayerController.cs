@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float moveForce;
     public string state;
     public GameObject inventoryUI;
+    public GameObject selectedSlot;
     public float jumpTime;
     public float distanceTraveled;
     public float amountLookedAround;
@@ -36,6 +37,12 @@ public class PlayerController : MonoBehaviour
         // Subscribe Sprint method to sprint key
         controller.Gameplay.Sprint.started += StartSprint;
         controller.Gameplay.Sprint.canceled += EndSprint;
+        // Subscribe inventory hotkeys
+        controller.Gameplay.Hotkey1.started += Hotkey1;
+        controller.Gameplay.Hotkey2.started += Hotkey2;
+        controller.Gameplay.Hotkey3.started += Hotkey3;
+        controller.Gameplay.Hotkey4.started += Hotkey4;
+        controller.Gameplay.Hotkey5.started += Hotkey5;
     }
 
     private void Update() {
@@ -181,5 +188,25 @@ public class PlayerController : MonoBehaviour
             v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
             v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
         );
+    }
+
+    public void Hotkey1(InputAction.CallbackContext context) {
+        selectedSlot.transform.position = new Vector3(733.4f, 108.5f, 0);
+    }
+
+    public void Hotkey2(InputAction.CallbackContext context) {
+        selectedSlot.transform.position = new Vector3(846.9f, 108.5f, 0);
+    }
+
+    public void Hotkey3(InputAction.CallbackContext context) {
+        selectedSlot.transform.position = new Vector3(960.4f, 108.5f, 0);
+    }
+
+    public void Hotkey4(InputAction.CallbackContext context) {
+        selectedSlot.transform.position = new Vector3(1073.9f, 108.5f, 0);
+    }
+
+    public void Hotkey5(InputAction.CallbackContext context) {
+        selectedSlot.transform.position = new Vector3(1187.4f, 108.5f, 0);
     }
 }

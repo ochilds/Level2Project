@@ -80,6 +80,51 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotkey1"",
+                    ""type"": ""Button"",
+                    ""id"": ""17b940d4-4811-42d2-8ae0-9c50c7c8a3f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotkey2"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a0c9673-5d07-4389-8fc2-edffefbeffc2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotkey3"",
+                    ""type"": ""Button"",
+                    ""id"": ""f2fb7e7c-1660-4b91-960d-aca419ddb21b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotkey4"",
+                    ""type"": ""Button"",
+                    ""id"": ""997f9d2a-3d57-40a1-b936-23892708fc3b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hotkey5"",
+                    ""type"": ""Button"",
+                    ""id"": ""23672618-379e-452e-90c8-7c4c662fbe94"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +237,61 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f64b4531-72e2-4ccc-8e35-706b0d5209e3"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard+Mouse"",
+                    ""action"": ""Hotkey1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2041abd-1fc9-4815-be4e-234b1c3b05dd"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard+Mouse"",
+                    ""action"": ""Hotkey2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3177c559-c3a4-4566-8981-751f9de72b7c"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard+Mouse"",
+                    ""action"": ""Hotkey3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcb0efa2-a593-45c3-a7ff-cfe7a3f1a458"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard+Mouse"",
+                    ""action"": ""Hotkey4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""241ef74f-2be8-44d6-becd-28e0f9008b53"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard+Mouse"",
+                    ""action"": ""Hotkey5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -251,6 +351,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_Punch = m_Gameplay.FindAction("Punch", throwIfNotFound: true);
         m_Gameplay_OpenInventory = m_Gameplay.FindAction("Open Inventory", throwIfNotFound: true);
         m_Gameplay_Sprint = m_Gameplay.FindAction("Sprint", throwIfNotFound: true);
+        m_Gameplay_Hotkey1 = m_Gameplay.FindAction("Hotkey1", throwIfNotFound: true);
+        m_Gameplay_Hotkey2 = m_Gameplay.FindAction("Hotkey2", throwIfNotFound: true);
+        m_Gameplay_Hotkey3 = m_Gameplay.FindAction("Hotkey3", throwIfNotFound: true);
+        m_Gameplay_Hotkey4 = m_Gameplay.FindAction("Hotkey4", throwIfNotFound: true);
+        m_Gameplay_Hotkey5 = m_Gameplay.FindAction("Hotkey5", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_CloseInventory = m_Inventory.FindAction("Close Inventory", throwIfNotFound: true);
@@ -321,6 +426,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Punch;
     private readonly InputAction m_Gameplay_OpenInventory;
     private readonly InputAction m_Gameplay_Sprint;
+    private readonly InputAction m_Gameplay_Hotkey1;
+    private readonly InputAction m_Gameplay_Hotkey2;
+    private readonly InputAction m_Gameplay_Hotkey3;
+    private readonly InputAction m_Gameplay_Hotkey4;
+    private readonly InputAction m_Gameplay_Hotkey5;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -331,6 +441,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Punch => m_Wrapper.m_Gameplay_Punch;
         public InputAction @OpenInventory => m_Wrapper.m_Gameplay_OpenInventory;
         public InputAction @Sprint => m_Wrapper.m_Gameplay_Sprint;
+        public InputAction @Hotkey1 => m_Wrapper.m_Gameplay_Hotkey1;
+        public InputAction @Hotkey2 => m_Wrapper.m_Gameplay_Hotkey2;
+        public InputAction @Hotkey3 => m_Wrapper.m_Gameplay_Hotkey3;
+        public InputAction @Hotkey4 => m_Wrapper.m_Gameplay_Hotkey4;
+        public InputAction @Hotkey5 => m_Wrapper.m_Gameplay_Hotkey5;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -358,6 +473,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
+            @Hotkey1.started += instance.OnHotkey1;
+            @Hotkey1.performed += instance.OnHotkey1;
+            @Hotkey1.canceled += instance.OnHotkey1;
+            @Hotkey2.started += instance.OnHotkey2;
+            @Hotkey2.performed += instance.OnHotkey2;
+            @Hotkey2.canceled += instance.OnHotkey2;
+            @Hotkey3.started += instance.OnHotkey3;
+            @Hotkey3.performed += instance.OnHotkey3;
+            @Hotkey3.canceled += instance.OnHotkey3;
+            @Hotkey4.started += instance.OnHotkey4;
+            @Hotkey4.performed += instance.OnHotkey4;
+            @Hotkey4.canceled += instance.OnHotkey4;
+            @Hotkey5.started += instance.OnHotkey5;
+            @Hotkey5.performed += instance.OnHotkey5;
+            @Hotkey5.canceled += instance.OnHotkey5;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -380,6 +510,21 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
+            @Hotkey1.started -= instance.OnHotkey1;
+            @Hotkey1.performed -= instance.OnHotkey1;
+            @Hotkey1.canceled -= instance.OnHotkey1;
+            @Hotkey2.started -= instance.OnHotkey2;
+            @Hotkey2.performed -= instance.OnHotkey2;
+            @Hotkey2.canceled -= instance.OnHotkey2;
+            @Hotkey3.started -= instance.OnHotkey3;
+            @Hotkey3.performed -= instance.OnHotkey3;
+            @Hotkey3.canceled -= instance.OnHotkey3;
+            @Hotkey4.started -= instance.OnHotkey4;
+            @Hotkey4.performed -= instance.OnHotkey4;
+            @Hotkey4.canceled -= instance.OnHotkey4;
+            @Hotkey5.started -= instance.OnHotkey5;
+            @Hotkey5.performed -= instance.OnHotkey5;
+            @Hotkey5.canceled -= instance.OnHotkey5;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -460,6 +605,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnPunch(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnHotkey1(InputAction.CallbackContext context);
+        void OnHotkey2(InputAction.CallbackContext context);
+        void OnHotkey3(InputAction.CallbackContext context);
+        void OnHotkey4(InputAction.CallbackContext context);
+        void OnHotkey5(InputAction.CallbackContext context);
     }
     public interface IInventoryActions
     {
