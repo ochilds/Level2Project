@@ -28,6 +28,12 @@ public class ItemPickupLogic : MonoBehaviour
                                             transform.position.y + heightOffset + (height - hit.distance), 
                                             transform.position.z);
         }
+        // If no floor is found move upwards
+        else {
+            transform.position = new Vector3(transform.position.x, 
+                                            transform.position.y + 0.1f, 
+                                            transform.position.z);
+        }
         // Rotate object
         transform.Rotate(0, 0, 2);
         // If within 3 units of player start moving towards player by averaging Vector3's with bias towards my position
