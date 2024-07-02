@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public string state;
     public GameObject inventoryUI;
     public float jumpTime;
+    public float distanceTraveled;
+    public float amountLookedAround;
+    public int objectsHit;
     // Start is called before the first frame update
     void Start() {
         // Enable control scheme
@@ -97,6 +101,8 @@ public class PlayerController : MonoBehaviour
         MoveAmount = RotateVector2(MoveAmount, -cubeRotation.y);
         // Add the force to rigid body
         myRigidBody.AddForce(new Vector3(moveForce * MoveAmount.x, 0, moveForce * MoveAmount.y));
+        // Update distance traveled
+        distanceTraveled += MathF.Sqrt(MathF.Pow(MoveAmount.x, 2) + MathF.Pow(MoveAmount.y, 2));
     }
 
     private void RotateCamera(Vector2 RotateAmount) {
@@ -112,6 +118,8 @@ public class PlayerController : MonoBehaviour
             // Update internal cube rotation
             cubeRotation += new Vector2(-RotateAmount.y, RotateAmount.x);
         }
+        // Update amount looked
+        amountLookedAround += MathF.Sqrt(MathF.Pow(RotateAmount.x, 2) + MathF.Pow(RotateAmount.y, 2));
     }
 
     public void Jump() {
@@ -136,10 +144,11 @@ public class PlayerController : MonoBehaviour
         // Raycast forward
         RaycastHit hit;
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, 3f)) {
-            // if raycast hits object that can break call break on that object
+            // If raycast hits object that can break call break on that object
             if (hit.transform.gameObject.TryGetComponent<ItemBreakingLogic>(out ItemBreakingLogic logic)) {
-                Debug.Log(playerCamera.transform.forward);
                 logic.Break(hit.point, playerCamera.transform.forward);
+                // Update objects hit
+                objectsHit += 1;
             }
         }
     }
