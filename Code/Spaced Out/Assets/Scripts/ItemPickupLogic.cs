@@ -10,6 +10,7 @@ public class ItemPickupLogic : MonoBehaviour
     public int amount;
     public GameObject player;
     public int id;
+    public int dropTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,14 +37,19 @@ public class ItemPickupLogic : MonoBehaviour
         }
         // Rotate object
         transform.Rotate(0, 0, 2);
-        // If within 3 units of player start moving towards player by averaging Vector3's with bias towards my position
-        if (Vector3.Distance(transform.position, player.transform.position) < 3) {
-            transform.position = (player.transform.position + (transform.position * 7)) / 8;
-        }
-        // If withing 0.75 units of player update players inventory and destory self if correctly added to inventory
-        if (Vector3.Distance(transform.position, player.transform.position) < 1f) {
-            if (player.GetComponent<InventorySystem>().AddItem(id, amount)) {
-                Destroy(this.gameObject);
+        // Update Drop Timer
+        dropTimer -= 1;
+        // If player has free slot and drop timer is up
+        if (player.GetComponent<InventorySystem>().GetFirstEmptySlot() != -1 && dropTimer <= 0) {
+            // If within 3 units of player start moving towards player by averaging Vector3's with bias towards my position
+            if (Vector3.Distance(transform.position, player.transform.position) < 3) {
+                transform.position = (player.transform.position + (transform.position * 7)) / 8;
+            }
+            // If withing 0.75 units of player update players inventory and destory self if correctly added to inventory
+            if (Vector3.Distance(transform.position, player.transform.position) < 1f) {
+                if (player.GetComponent<InventorySystem>().AddItem(id, amount)) {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

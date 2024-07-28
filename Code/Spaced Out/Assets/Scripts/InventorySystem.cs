@@ -17,9 +17,9 @@ public class InventorySystem : MonoBehaviour
         for (int i = 1;i < inventoryItemStorage.transform.childCount + 1;i++) {
             inventoryItems[i] = inventoryItemStorage.transform.GetChild(i - 1).gameObject;
         }
-        // Find all children of the UI object except for the camera and light and add to array
-        slots = new GameObject[uiInventory.transform.childCount - 2];
-        for (int i = 0; i < uiInventory.transform.childCount - 2;i++) {
+        // Find all children of the UI object except for the camera,light and slection box and add to array
+        slots = new GameObject[uiInventory.transform.childCount - 3];
+        for (int i = 0; i < uiInventory.transform.childCount - 3;i++) {
             slots[i] = uiInventory.transform.GetChild(i).gameObject;
         }
     }

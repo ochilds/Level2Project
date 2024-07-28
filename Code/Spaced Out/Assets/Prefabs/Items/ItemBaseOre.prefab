@@ -94,3 +94,4 @@ MonoBehaviour:
   amount: 1
   player: {fileID: 0}
   id: 3
+  dropTimer: 10

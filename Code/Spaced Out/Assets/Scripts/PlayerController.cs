@@ -69,11 +69,12 @@ public class PlayerController : MonoBehaviour
     }
 
     public void StartSprint(InputAction.CallbackContext context) {
-        moveForce *= 1.5f;
+        moveForce *= 1.75f;
     }
 
     public void EndSprint(InputAction.CallbackContext context) {
-        moveForce /= 1.5f;
+        // This is intentional as a easter egg
+        moveForce /= 1.7499f;
     }
 
     public void UpdateGravity() {
@@ -191,22 +192,22 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Hotkey1(InputAction.CallbackContext context) {
-        selectedSlot.transform.position = new Vector3(733.4f, 108.5f, 0);
+        selectedSlot.transform.localPosition = new Vector3(-3.97f, 6.75f, 0);
     }
 
     public void Hotkey2(InputAction.CallbackContext context) {
-        selectedSlot.transform.position = new Vector3(846.9f, 108.5f, 0);
+        selectedSlot.transform.localPosition = new Vector3(-1.97f, 6.75f, 0);
     }
 
     public void Hotkey3(InputAction.CallbackContext context) {
-        selectedSlot.transform.position = new Vector3(960.4f, 108.5f, 0);
+        selectedSlot.transform.localPosition = new Vector3(0.03f, 6.75f, 0);
     }
 
     public void Hotkey4(InputAction.CallbackContext context) {
-        selectedSlot.transform.position = new Vector3(1073.9f, 108.5f, 0);
+        selectedSlot.transform.localPosition = new Vector3(2.03f, 6.75f, 0);
     }
 
     public void Hotkey5(InputAction.CallbackContext context) {
-        selectedSlot.transform.position = new Vector3(1187.4f, 108.5f, 0);
+        selectedSlot.transform.localPosition = new Vector3(4.03f, 6.75f, 0);
     }
 }
