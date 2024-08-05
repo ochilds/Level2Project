@@ -8,14 +8,20 @@ public class InventorySystem : MonoBehaviour
 {
     public int[,] inventory = { { 0, 0, }, { 0, 0, }, { 0, 0, }, { 0, 0, }, { 0, 0, }, };
     public Dictionary<int, GameObject> inventoryItems = new Dictionary<int, GameObject>();
+    public Dictionary<int, GameObject> items = new Dictionary<int, GameObject>();
     public GameObject uiInventory;
     public GameObject inventoryItemStorage;
+    public GameObject itemStorage;
     public GameObject[] slots;
 
     private void Start() {
         // Add all inventory items to the dictionary (Adding one so ID's match)
         for (int i = 1;i < inventoryItemStorage.transform.childCount + 1;i++) {
             inventoryItems[i] = inventoryItemStorage.transform.GetChild(i - 1).gameObject;
+        }
+        // Add all items to the dictionary (Adding one so ID's match)
+        for (int i = 1;i < itemStorage.transform.childCount + 1;i++) {
+            items[i] = itemStorage.transform.GetChild(i - 1).gameObject;
         }
         // Find all children of the UI object except for the camera,light and slection box and add to array
         slots = new GameObject[uiInventory.transform.childCount - 3];
@@ -64,6 +70,22 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
+    public bool RemoveItemFromSlot(int slot) {
+        if (inventory[slot,1] == 0) {
+            return false;
+        }
+        if (inventory[slot,1] == 1) {
+            inventory[slot,0] = 0;
+            inventory[slot,1] = 0;
+            return true;
+        }
+        if (inventory[slot,1] > 1) {
+            inventory[slot,1] -= 1;
+            return true;
+        }
+        return false;
+    }
+
     public int FindSlotWithItem(int item) {
         // For every slot in inventory
         for (int i = 0; i < (inventory.Length / 2) - 1; i++) {
@@ -86,5 +108,14 @@ public class InventorySystem : MonoBehaviour
         }
         // If no slots are found return -1
         return -1;
+    }
+
+    public void DropItem(int index, int slot) {
+        // If successfully removes object from inventory
+        if (RemoveItemFromSlot(slot)) {
+            // Create new item and set object pickup timer to 100 frames (1.4 seconds)
+            GameObject droppedItem = (GameObject)Instantiate(items[index], transform.position + transform.forward, Quaternion.Euler(-90, 0, 0));  
+            droppedItem.GetComponent<ItemPickupLogic>().pickupTimer = 100;
+        }
     }
 }

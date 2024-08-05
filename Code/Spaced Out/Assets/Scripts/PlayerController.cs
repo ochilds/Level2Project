@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public string state;
     public GameObject inventoryUI;
     public GameObject selectedSlot;
+    public int selectedSlotIndex;
     public float jumpTime;
     public float distanceTraveled;
     public float amountLookedAround;
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
         controller.Gameplay.Hotkey3.started += Hotkey3;
         controller.Gameplay.Hotkey4.started += Hotkey4;
         controller.Gameplay.Hotkey5.started += Hotkey5;
+        // Subscribe drop button
+        controller.Gameplay.DropItem.started += DropItem;
     }
 
     private void Update() {
@@ -192,22 +195,32 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Hotkey1(InputAction.CallbackContext context) {
+        selectedSlotIndex = 0;
         selectedSlot.transform.localPosition = new Vector3(-3.97f, 6.75f, 0);
     }
 
     public void Hotkey2(InputAction.CallbackContext context) {
+        selectedSlotIndex = 1;
         selectedSlot.transform.localPosition = new Vector3(-1.97f, 6.75f, 0);
     }
 
     public void Hotkey3(InputAction.CallbackContext context) {
+        selectedSlotIndex = 2;
         selectedSlot.transform.localPosition = new Vector3(0.03f, 6.75f, 0);
     }
 
     public void Hotkey4(InputAction.CallbackContext context) {
+        selectedSlotIndex = 3;
         selectedSlot.transform.localPosition = new Vector3(2.03f, 6.75f, 0);
     }
 
     public void Hotkey5(InputAction.CallbackContext context) {
+        selectedSlotIndex = 4;
         selectedSlot.transform.localPosition = new Vector3(4.03f, 6.75f, 0);
+    }
+
+    public void DropItem(InputAction.CallbackContext context) {
+        this.GetComponent<InventorySystem>().
+        DropItem(this.GetComponent<InventorySystem>().inventory[selectedSlotIndex, 0], selectedSlotIndex);
     }
 }

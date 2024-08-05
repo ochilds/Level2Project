@@ -125,6 +125,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drop Item"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8ea5748-87e2-4d7f-b741-afdef3fedde0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Hotkey5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c02370e9-068f-4c93-821c-5b6bb342aa6c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard+Mouse"",
+                    ""action"": ""Drop Item"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -356,6 +376,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_Hotkey3 = m_Gameplay.FindAction("Hotkey3", throwIfNotFound: true);
         m_Gameplay_Hotkey4 = m_Gameplay.FindAction("Hotkey4", throwIfNotFound: true);
         m_Gameplay_Hotkey5 = m_Gameplay.FindAction("Hotkey5", throwIfNotFound: true);
+        m_Gameplay_DropItem = m_Gameplay.FindAction("Drop Item", throwIfNotFound: true);
         // Inventory
         m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
         m_Inventory_CloseInventory = m_Inventory.FindAction("Close Inventory", throwIfNotFound: true);
@@ -431,6 +452,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Hotkey3;
     private readonly InputAction m_Gameplay_Hotkey4;
     private readonly InputAction m_Gameplay_Hotkey5;
+    private readonly InputAction m_Gameplay_DropItem;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -446,6 +468,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Hotkey3 => m_Wrapper.m_Gameplay_Hotkey3;
         public InputAction @Hotkey4 => m_Wrapper.m_Gameplay_Hotkey4;
         public InputAction @Hotkey5 => m_Wrapper.m_Gameplay_Hotkey5;
+        public InputAction @DropItem => m_Wrapper.m_Gameplay_DropItem;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -488,6 +511,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Hotkey5.started += instance.OnHotkey5;
             @Hotkey5.performed += instance.OnHotkey5;
             @Hotkey5.canceled += instance.OnHotkey5;
+            @DropItem.started += instance.OnDropItem;
+            @DropItem.performed += instance.OnDropItem;
+            @DropItem.canceled += instance.OnDropItem;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -525,6 +551,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Hotkey5.started -= instance.OnHotkey5;
             @Hotkey5.performed -= instance.OnHotkey5;
             @Hotkey5.canceled -= instance.OnHotkey5;
+            @DropItem.started -= instance.OnDropItem;
+            @DropItem.performed -= instance.OnDropItem;
+            @DropItem.canceled -= instance.OnDropItem;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -610,6 +639,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnHotkey3(InputAction.CallbackContext context);
         void OnHotkey4(InputAction.CallbackContext context);
         void OnHotkey5(InputAction.CallbackContext context);
+        void OnDropItem(InputAction.CallbackContext context);
     }
     public interface IInventoryActions
     {

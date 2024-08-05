@@ -10,7 +10,7 @@ public class ItemPickupLogic : MonoBehaviour
     public int amount;
     public GameObject player;
     public int id;
-    public int dropTimer;
+    public int pickupTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +23,20 @@ public class ItemPickupLogic : MonoBehaviour
     {
         // Generate height value using sine
         height = (Mathf.Sin(Time.timeSinceLevelLoad * 2) + 3) * 0.05f;
-        //Find distance between object and floor and adjust position accordinly
+        // Find distance between object and floor
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity)) {
-            transform.position = new Vector3(transform.position.x, 
-                                            transform.position.y + heightOffset + (height - hit.distance), 
-                                            transform.position.z);
+            // If within 0.3 units snap to floor
+            if (hit.distance < 1) {
+                transform.position = new Vector3(transform.position.x, 
+                                                transform.position.y + heightOffset + (height - hit.distance), 
+                                                transform.position.z);
+            }
+            // Else move down
+            else {
+                transform.position = new Vector3(transform.position.x, 
+                                                transform.position.y - 0.1f,
+                                                transform.position.z);
+            }
         }
         // If no floor is found move upwards
         else {
@@ -38,9 +47,9 @@ public class ItemPickupLogic : MonoBehaviour
         // Rotate object
         transform.Rotate(0, 0, 2);
         // Update Drop Timer
-        dropTimer -= 1;
+        pickupTimer -= 1;
         // If player has free slot and drop timer is up
-        if (player.GetComponent<InventorySystem>().GetFirstEmptySlot() != -1 && dropTimer <= 0) {
+        if (player.GetComponent<InventorySystem>().GetFirstEmptySlot() != -1 && pickupTimer <= 0) {
             // If within 3 units of player start moving towards player by averaging Vector3's with bias towards my position
             if (Vector3.Distance(transform.position, player.transform.position) < 3) {
                 transform.position = (player.transform.position + (transform.position * 7)) / 8;
