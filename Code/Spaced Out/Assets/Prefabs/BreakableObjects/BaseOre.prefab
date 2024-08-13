@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ad65e7a94a0ec4da4ac3ee96c10fc377, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ad65e7a94a0ec4da4ac3ee96c10fc377, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ad65e7a94a0ec4da4ac3ee96c10fc377, type: 3}
       propertyPath: m_Name
       value: BaseOre
@@ -62,6 +70,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad65e7a94a0ec4da4ac3ee96c10fc377, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6418849402745117151}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad65e7a94a0ec4da4ac3ee96c10fc377, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7430953173803421814}
   m_SourcePrefab: {fileID: 100100000, guid: ad65e7a94a0ec4da4ac3ee96c10fc377, type: 3}
 --- !u!1 &3684086742115935742 stripped
 GameObject:
@@ -112,3 +123,15 @@ MonoBehaviour:
   shakeTimer: 0
   toMove: {x: 0, y: 0, z: 0}
   breakParticle: {fileID: 1862094614604079771, guid: 246a47f3121824bae9b1dfb06487d224, type: 3}
+--- !u!114 &-7430953173803421814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684086742115935742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b29b97d0ea444674859e7e42f873ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

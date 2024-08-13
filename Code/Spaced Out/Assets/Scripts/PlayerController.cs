@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float distanceTraveled;
     public float amountLookedAround;
     public int objectsHit;
+    public GameObject itemStorage;
     // Start is called before the first frame update
     void Start() {
         // Enable control scheme

@@ -359,6 +359,7 @@
 "Assets/Scripts/InventorySystem.cs"
 "Assets/Scripts/ItemBreakingLogic.cs"
 "Assets/Scripts/ItemPickupLogic.cs"
+"Assets/Scripts/ItemSpawn.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/TextboxSystem.cs"
 "Assets/Scripts/TreeGenerator.cs"
