@@ -28,7 +28,7 @@ public class TreeGenerator : MonoBehaviour
     }
 
     void GenerateTrees() {
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 5000; i++) {
             int choice = UnityEngine.Random.Range(1, 7);
             if (choice < 4) {
                 SpawnTree(UnityEngine.Random.Range(xMin, xMax), UnityEngine.Random.Range(yMin, yMax), chunkStorage);

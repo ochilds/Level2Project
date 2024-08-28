@@ -64,7 +64,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Open Inventory"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""41d40b51-2838-46f5-a629-0bbc7feccdf8"",
                     ""expectedControlType"": ""Button"",
@@ -121,15 +121,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""name"": ""Hotkey5"",
                     ""type"": ""Button"",
                     ""id"": ""23672618-379e-452e-90c8-7c4c662fbe94"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Drop Item"",
-                    ""type"": ""Button"",
-                    ""id"": ""e8ea5748-87e2-4d7f-b741-afdef3fedde0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -228,11 +219,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b250f063-10dc-40ab-85dd-d6af99e17bdf"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard+Mouse"",
-                    ""action"": ""Open Inventory"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -301,28 +292,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Hotkey5"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c02370e9-068f-4c93-821c-5b6bb342aa6c"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard+Mouse"",
-                    ""action"": ""Drop Item"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""Inventory"",
-            ""id"": ""6bee2c06-4ab5-4a11-83cc-45cf689e5133"",
+            ""name"": ""PauseScreen"",
+            ""id"": ""1fd9c05c-2de9-4b4a-a665-80922287bf21"",
             ""actions"": [
                 {
-                    ""name"": ""Close Inventory"",
+                    ""name"": ""Unpause"",
                     ""type"": ""Button"",
-                    ""id"": ""74a7e666-8d6e-45bc-ab0a-a571a61f69f7"",
+                    ""id"": ""087940d4-24b1-4b9a-8d32-7778fb801441"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -332,12 +312,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""6913f63c-20c8-44d4-8f59-dd8087979e84"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""id"": ""951c0a4f-6259-4632-bb5b-e2b50b40b266"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Close Inventory"",
+                    ""groups"": ""Keyboard+Mouse"",
+                    ""action"": ""Unpause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -369,17 +349,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Gameplay_MoveCamera = m_Gameplay.FindAction("Move Camera", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Punch = m_Gameplay.FindAction("Punch", throwIfNotFound: true);
-        m_Gameplay_OpenInventory = m_Gameplay.FindAction("Open Inventory", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_Sprint = m_Gameplay.FindAction("Sprint", throwIfNotFound: true);
         m_Gameplay_Hotkey1 = m_Gameplay.FindAction("Hotkey1", throwIfNotFound: true);
         m_Gameplay_Hotkey2 = m_Gameplay.FindAction("Hotkey2", throwIfNotFound: true);
         m_Gameplay_Hotkey3 = m_Gameplay.FindAction("Hotkey3", throwIfNotFound: true);
         m_Gameplay_Hotkey4 = m_Gameplay.FindAction("Hotkey4", throwIfNotFound: true);
         m_Gameplay_Hotkey5 = m_Gameplay.FindAction("Hotkey5", throwIfNotFound: true);
-        m_Gameplay_DropItem = m_Gameplay.FindAction("Drop Item", throwIfNotFound: true);
-        // Inventory
-        m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
-        m_Inventory_CloseInventory = m_Inventory.FindAction("Close Inventory", throwIfNotFound: true);
+        // PauseScreen
+        m_PauseScreen = asset.FindActionMap("PauseScreen", throwIfNotFound: true);
+        m_PauseScreen_Unpause = m_PauseScreen.FindAction("Unpause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -445,14 +424,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_MoveCamera;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Punch;
-    private readonly InputAction m_Gameplay_OpenInventory;
+    private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_Sprint;
     private readonly InputAction m_Gameplay_Hotkey1;
     private readonly InputAction m_Gameplay_Hotkey2;
     private readonly InputAction m_Gameplay_Hotkey3;
     private readonly InputAction m_Gameplay_Hotkey4;
     private readonly InputAction m_Gameplay_Hotkey5;
-    private readonly InputAction m_Gameplay_DropItem;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -461,14 +439,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @MoveCamera => m_Wrapper.m_Gameplay_MoveCamera;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Punch => m_Wrapper.m_Gameplay_Punch;
-        public InputAction @OpenInventory => m_Wrapper.m_Gameplay_OpenInventory;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @Sprint => m_Wrapper.m_Gameplay_Sprint;
         public InputAction @Hotkey1 => m_Wrapper.m_Gameplay_Hotkey1;
         public InputAction @Hotkey2 => m_Wrapper.m_Gameplay_Hotkey2;
         public InputAction @Hotkey3 => m_Wrapper.m_Gameplay_Hotkey3;
         public InputAction @Hotkey4 => m_Wrapper.m_Gameplay_Hotkey4;
         public InputAction @Hotkey5 => m_Wrapper.m_Gameplay_Hotkey5;
-        public InputAction @DropItem => m_Wrapper.m_Gameplay_DropItem;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -490,9 +467,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Punch.started += instance.OnPunch;
             @Punch.performed += instance.OnPunch;
             @Punch.canceled += instance.OnPunch;
-            @OpenInventory.started += instance.OnOpenInventory;
-            @OpenInventory.performed += instance.OnOpenInventory;
-            @OpenInventory.canceled += instance.OnOpenInventory;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
@@ -511,9 +488,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Hotkey5.started += instance.OnHotkey5;
             @Hotkey5.performed += instance.OnHotkey5;
             @Hotkey5.canceled += instance.OnHotkey5;
-            @DropItem.started += instance.OnDropItem;
-            @DropItem.performed += instance.OnDropItem;
-            @DropItem.canceled += instance.OnDropItem;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -530,9 +504,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Punch.started -= instance.OnPunch;
             @Punch.performed -= instance.OnPunch;
             @Punch.canceled -= instance.OnPunch;
-            @OpenInventory.started -= instance.OnOpenInventory;
-            @OpenInventory.performed -= instance.OnOpenInventory;
-            @OpenInventory.canceled -= instance.OnOpenInventory;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
@@ -551,9 +525,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Hotkey5.started -= instance.OnHotkey5;
             @Hotkey5.performed -= instance.OnHotkey5;
             @Hotkey5.canceled -= instance.OnHotkey5;
-            @DropItem.started -= instance.OnDropItem;
-            @DropItem.performed -= instance.OnDropItem;
-            @DropItem.canceled -= instance.OnDropItem;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -572,51 +543,51 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
 
-    // Inventory
-    private readonly InputActionMap m_Inventory;
-    private List<IInventoryActions> m_InventoryActionsCallbackInterfaces = new List<IInventoryActions>();
-    private readonly InputAction m_Inventory_CloseInventory;
-    public struct InventoryActions
+    // PauseScreen
+    private readonly InputActionMap m_PauseScreen;
+    private List<IPauseScreenActions> m_PauseScreenActionsCallbackInterfaces = new List<IPauseScreenActions>();
+    private readonly InputAction m_PauseScreen_Unpause;
+    public struct PauseScreenActions
     {
         private @Controls m_Wrapper;
-        public InventoryActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @CloseInventory => m_Wrapper.m_Inventory_CloseInventory;
-        public InputActionMap Get() { return m_Wrapper.m_Inventory; }
+        public PauseScreenActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Unpause => m_Wrapper.m_PauseScreen_Unpause;
+        public InputActionMap Get() { return m_Wrapper.m_PauseScreen; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InventoryActions set) { return set.Get(); }
-        public void AddCallbacks(IInventoryActions instance)
+        public static implicit operator InputActionMap(PauseScreenActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseScreenActions instance)
         {
-            if (instance == null || m_Wrapper.m_InventoryActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_InventoryActionsCallbackInterfaces.Add(instance);
-            @CloseInventory.started += instance.OnCloseInventory;
-            @CloseInventory.performed += instance.OnCloseInventory;
-            @CloseInventory.canceled += instance.OnCloseInventory;
+            if (instance == null || m_Wrapper.m_PauseScreenActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseScreenActionsCallbackInterfaces.Add(instance);
+            @Unpause.started += instance.OnUnpause;
+            @Unpause.performed += instance.OnUnpause;
+            @Unpause.canceled += instance.OnUnpause;
         }
 
-        private void UnregisterCallbacks(IInventoryActions instance)
+        private void UnregisterCallbacks(IPauseScreenActions instance)
         {
-            @CloseInventory.started -= instance.OnCloseInventory;
-            @CloseInventory.performed -= instance.OnCloseInventory;
-            @CloseInventory.canceled -= instance.OnCloseInventory;
+            @Unpause.started -= instance.OnUnpause;
+            @Unpause.performed -= instance.OnUnpause;
+            @Unpause.canceled -= instance.OnUnpause;
         }
 
-        public void RemoveCallbacks(IInventoryActions instance)
+        public void RemoveCallbacks(IPauseScreenActions instance)
         {
-            if (m_Wrapper.m_InventoryActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PauseScreenActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IInventoryActions instance)
+        public void SetCallbacks(IPauseScreenActions instance)
         {
-            foreach (var item in m_Wrapper.m_InventoryActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PauseScreenActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_InventoryActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PauseScreenActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public InventoryActions @Inventory => new InventoryActions(this);
+    public PauseScreenActions @PauseScreen => new PauseScreenActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -632,17 +603,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMoveCamera(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPunch(InputAction.CallbackContext context);
-        void OnOpenInventory(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnHotkey1(InputAction.CallbackContext context);
         void OnHotkey2(InputAction.CallbackContext context);
         void OnHotkey3(InputAction.CallbackContext context);
         void OnHotkey4(InputAction.CallbackContext context);
         void OnHotkey5(InputAction.CallbackContext context);
-        void OnDropItem(InputAction.CallbackContext context);
     }
-    public interface IInventoryActions
+    public interface IPauseScreenActions
     {
-        void OnCloseInventory(InputAction.CallbackContext context);
+        void OnUnpause(InputAction.CallbackContext context);
     }
 }

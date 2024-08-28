@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float moveForce;
     public string state;
-    public GameObject inventoryUI;
+    public GameObject pauseUI;
+    public GameObject FirstPersonUI;
     public GameObject selectedSlot;
     public int selectedSlotIndex;
     public float jumpTime;
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
     public float amountLookedAround;
     public int objectsHit;
     public GameObject itemStorage;
+    public int itemsPickedUp;
+    public GameObject key;
     // Start is called before the first frame update
     void Start() {
         // Enable control scheme
@@ -45,8 +48,9 @@ public class PlayerController : MonoBehaviour
         controller.Gameplay.Hotkey3.started += Hotkey3;
         controller.Gameplay.Hotkey4.started += Hotkey4;
         controller.Gameplay.Hotkey5.started += Hotkey5;
-        // Subscribe drop button
-        controller.Gameplay.DropItem.started += DropItem;
+        // Subscribe pause button
+        controller.Gameplay.Pause.started += Pause;
+        controller.PauseScreen.Unpause.started += Unpause;
     }
 
     private void Update() {
@@ -165,24 +169,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OpenInventory(InputAction.CallbackContext context) {
+    public void Pause(InputAction.CallbackContext context) {
         // Make inventory UI visible
-        inventoryUI.SetActive(true);
+        pauseUI.SetActive(true);
+        FirstPersonUI.SetActive(false);
         // Switch control map to inventory control
         controller.Gameplay.Disable();
-        controller.Inventory.Enable();
+        controller.PauseScreen.Enable();
         // Make cursor visible
         Cursor.lockState = CursorLockMode.None;
+        // Freeze player
+        Time.timeScale = 0;
     }
 
-    public void CloseInventory(InputAction.CallbackContext context) {
+    public void UnpauseButton() {
         // Make inventory UI invisible
-        inventoryUI.SetActive(false);
+        pauseUI.SetActive(false);
+        FirstPersonUI.SetActive(true);
         // Switch control map in gameplay
-        controller.Inventory.Disable();
+        controller.PauseScreen.Disable();
         controller.Gameplay.Enable();
         // Hide and centre mouse
         Cursor.lockState = CursorLockMode.Locked;
+        // Unfreeze player
+        Time.timeScale = 1;
+    }
+
+    public void Unpause(InputAction.CallbackContext context) {
+        // Needs a seperate function for the button for some reason
+        // Make inventory UI invisible
+        pauseUI.SetActive(false);
+        FirstPersonUI.SetActive(true);
+        // Switch control map in gameplay
+        controller.PauseScreen.Disable();
+        controller.Gameplay.Enable();
+        // Hide and centre mouse
+        Cursor.lockState = CursorLockMode.Locked;
+        // Unfreeze player
+        Time.timeScale = 1;
     }
 
     public Vector2 RotateVector2(Vector2 v, float delta) {
@@ -223,5 +247,12 @@ public class PlayerController : MonoBehaviour
     public void DropItem(InputAction.CallbackContext context) {
         this.GetComponent<InventorySystem>().
         DropItem(this.GetComponent<InventorySystem>().inventory[selectedSlotIndex, 0], selectedSlotIndex);
+    }
+
+    public void SpawnKey() {
+        Instantiate(key, transform.position + new Vector3(UnityEngine.Random.Range(0, 1000), 
+                                                        1000, 
+                                                        UnityEngine.Random.Range(0, 1000)),
+                    Quaternion.Euler(90, 0, 0));
     }
 }

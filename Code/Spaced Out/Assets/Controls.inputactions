@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Open Inventory",
+                    "name": "Pause",
                     "type": "Button",
                     "id": "41d40b51-2838-46f5-a629-0bbc7feccdf8",
                     "expectedControlType": "Button",
@@ -99,15 +99,6 @@
                     "name": "Hotkey5",
                     "type": "Button",
                     "id": "23672618-379e-452e-90c8-7c4c662fbe94",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Drop Item",
-                    "type": "Button",
-                    "id": "e8ea5748-87e2-4d7f-b741-afdef3fedde0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -206,11 +197,11 @@
                 {
                     "name": "",
                     "id": "b250f063-10dc-40ab-85dd-d6af99e17bdf",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard+Mouse",
-                    "action": "Open Inventory",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -279,28 +270,17 @@
                     "action": "Hotkey5",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c02370e9-068f-4c93-821c-5b6bb342aa6c",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard+Mouse",
-                    "action": "Drop Item",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
         {
-            "name": "Inventory",
-            "id": "6bee2c06-4ab5-4a11-83cc-45cf689e5133",
+            "name": "PauseScreen",
+            "id": "1fd9c05c-2de9-4b4a-a665-80922287bf21",
             "actions": [
                 {
-                    "name": "Close Inventory",
+                    "name": "Unpause",
                     "type": "Button",
-                    "id": "74a7e666-8d6e-45bc-ab0a-a571a61f69f7",
+                    "id": "087940d4-24b1-4b9a-8d32-7778fb801441",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -310,12 +290,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "6913f63c-20c8-44d4-8f59-dd8087979e84",
-                    "path": "<Keyboard>/e",
+                    "id": "951c0a4f-6259-4632-bb5b-e2b50b40b266",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Close Inventory",
+                    "groups": "Keyboard+Mouse",
+                    "action": "Unpause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

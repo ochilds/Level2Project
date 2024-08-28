@@ -14,6 +14,7 @@ public class TextboxSystem : MonoBehaviour
     public PlayerController playerScript;
     public bool walkBoxShown = false;
     public bool punchTreeBoxShown = false;
+    public bool itemsCollectedBoxShown = false;
 
     public void ShowRobotTextbox(string textToShow) {
         state = 1;
@@ -37,12 +38,11 @@ public class TextboxSystem : MonoBehaviour
         // Initilize player script
         playerScript = player.GetComponent<PlayerController>();
         // Add initial dialouge
-        dialouge.Add("Oh... You're alive.... Initiliazing panic control system........          ");
-        dialouge.Add("Thank you for purchasing this spaceship from Nebula Makers Inc.          ");
-        dialouge.Add("'Where saftey is always first'          ");
-        dialouge.Add("Unfortunatly we forgot to put the hyperspeed engine in your ship and so, you crashed.        ");
-        dialouge.Add("Fortunatly you have landed on a planet that from short scans shows all the nessercary materials to make an engine.        ");
-        dialouge.Add("If you could gather those materials you could make and install your own engine.       ");
+        dialouge.Add("Hello 'Unknown Person'.             ");
+        dialouge.Add("Welcome to the moon mission saftey training course.        ");
+        dialouge.Add("In this senario you have crashed on a unknown planet.       ");
+        dialouge.Add("To help with the realism of this test we have given you amnesia.       ");
+        dialouge.Add("Now you need to try and get off this planet by gathering supplies.      ");
         dialouge.Add("First, try moving with the WASD keys and look around with the mouse.          ");
     }
 
@@ -62,16 +62,21 @@ public class TextboxSystem : MonoBehaviour
         }
 
         if (playerScript.distanceTraveled > 100 && playerScript.distanceTraveled > 100 && walkBoxShown == false) {
-            dialouge.Add("Good job! I'll note down that you're not a massive idiot.          ");
+            dialouge.Add("Good job! You've passed the first test.          ");
             dialouge.Add("Now try using the left mouse button on one of those trees.          ");
             walkBoxShown = true;
         }
 
         if (playerScript.objectsHit > 3 && punchTreeBoxShown == false) {
             dialouge.Add("Well done! You now have a 0.01% chance of survival.         ");
-            dialouge.Add("To make a engine you'll first need to make tools.         ");
-            dialouge.Add("Try gathering some more wood and use the crafting table on the ship.         ");
+            dialouge.Add("Try gathering some more supplies and see if you can find anything intresting.         ");
             punchTreeBoxShown = true;
+        }
+
+        if (playerScript.itemsPickedUp > 50 && itemsCollectedBoxShown == false) {
+            dialouge.Add("That should be enough items. See if there is anything important lying around here         ");
+            playerScript.SpawnKey();
+            itemsCollectedBoxShown = true;
         }
     }
 }
