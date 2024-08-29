@@ -56,7 +56,6 @@ public class KeyPickupLogic : MonoBehaviour
             }
             // If withing 0.75 units of player update players inventory and destory self if correctly added to inventory
             if (Vector3.Distance(transform.position, player.transform.position) < 25) {
-                Debug.Log("test");
                 if (player.GetComponent<InventorySystem>().AddItem(id, amount)) {
                     Destroy(this.gameObject);
                 }

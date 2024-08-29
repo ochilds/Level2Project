@@ -34,7 +34,7 @@ public class TextboxSystem : MonoBehaviour
         RobotTextBox.SetActive(false);
     }
 
-    private void Start() {
+    private void Awake() {
         // Initilize player script
         playerScript = player.GetComponent<PlayerController>();
         // Add initial dialouge

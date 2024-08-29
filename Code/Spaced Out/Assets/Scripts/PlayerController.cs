@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Device;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public GameObject itemStorage;
     public int itemsPickedUp;
     public GameObject key;
+    public GameObject loadingScreen;
     // Start is called before the first frame update
     void Start() {
         // Enable control scheme
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
         // Subscribe pause button
         controller.Gameplay.Pause.started += Pause;
         controller.PauseScreen.Unpause.started += Unpause;
+        // Unpause
+        UnpauseButton();
     }
 
     private void Update() {
@@ -253,6 +257,11 @@ public class PlayerController : MonoBehaviour
         Instantiate(key, transform.position + new Vector3(UnityEngine.Random.Range(0, 1000), 
                                                         1000, 
                                                         UnityEngine.Random.Range(0, 1000)),
-                    Quaternion.Euler(90, 0, 0));
+                    Quaternion.Euler(0, 0, 0));
+    }
+
+    public void loadTitleScreen() {
+        loadingScreen.SetActive(true);
+        SceneManager.LoadScene("TitleScreen");
     }
 }
