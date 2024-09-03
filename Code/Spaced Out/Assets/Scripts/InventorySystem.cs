@@ -71,18 +71,23 @@ public class InventorySystem : MonoBehaviour
     }
 
     public bool RemoveItemFromSlot(int slot) {
+        // Unused in the game
+        // If slot is empty return false
         if (inventory[slot,1] == 0) {
             return false;
         }
+        // If slot has one item remove it and set the item in the slot to nothing
         if (inventory[slot,1] == 1) {
             inventory[slot,0] = 0;
             inventory[slot,1] = 0;
             return true;
         }
+        // Else remove one item
         if (inventory[slot,1] > 1) {
             inventory[slot,1] -= 1;
             return true;
         }
+        // Failsafe
         return false;
     }
 

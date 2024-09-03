@@ -23,8 +23,10 @@ public class ItemBreakingLogic : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate() {
+        // Move if needed to create shake effect
         transform.position -= toMove;
         toMove = Vector3.zero;
+        // Get new movement for next frame
         if (shakeTimer > 0) {
             toMove = new Vector3(UnityEngine.Random.Range(-0.03f, 0.03f), 
                                  0, 

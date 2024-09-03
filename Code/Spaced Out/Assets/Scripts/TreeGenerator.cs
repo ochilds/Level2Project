@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class TreeGenerator : MonoBehaviour
 {
+    // OLD CODE UNUSED
+    // This is the code used to generate the breakable objects
     public float yMax = 1600;
     public float xMax = 1500;
     public float yMin = -1800;

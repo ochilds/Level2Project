@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
+    // This is to control the buttons on the title screen
     public GameObject loadingScreen;
     public void startGame() {
+        // Load the game
         loadingScreen.SetActive(true);
         SceneManager.LoadScene("SampleScene");
     }

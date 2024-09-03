@@ -15,7 +15,7 @@ public class TextboxSystem : MonoBehaviour
     public bool walkBoxShown = false;
     public bool punchTreeBoxShown = false;
     public bool itemsCollectedBoxShown = false;
-
+    public bool finalTextboxShown = false;
     public void ShowRobotTextbox(string textToShow) {
         state = 1;
         // Delete the current text and show icon+textbox
@@ -59,8 +59,12 @@ public class TextboxSystem : MonoBehaviour
         // If there is no dialouge to show and state equals 0 hide textbox
         if (dialouge.Count == 0 && state == 0) {
             HideRobotTextbox();
+            // If the final textbox has been shown end the game
+            if (finalTextboxShown) {
+                playerScript.loadTitleScreen();
+            }
         }
-
+        // Dialouge triggers
         if (playerScript.distanceTraveled > 100 && playerScript.distanceTraveled > 100 && walkBoxShown == false) {
             dialouge.Add("Good job! You've passed the first test.          ");
             dialouge.Add("Now try using the left mouse button on one of those trees.          ");
@@ -77,6 +81,10 @@ public class TextboxSystem : MonoBehaviour
             dialouge.Add("That should be enough items. See if there is anything important lying around here         ");
             playerScript.SpawnKey();
             itemsCollectedBoxShown = true;
+        }
+        if (playerScript.keyPickedUp && finalTextboxShown == false) {
+            dialouge.Add("Good job you won!         ");
+            finalTextboxShown = true;
         }
     }
 }

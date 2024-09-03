@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public int itemsPickedUp;
     public GameObject key;
     public GameObject loadingScreen;
+    public bool keyPickedUp;
     // Start is called before the first frame update
     void Start() {
         // Enable control scheme
@@ -90,6 +91,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void UpdateGravity() {
+        // If moving down fast enough start speeding up more
         if (myRigidBody.velocity.y < -1) {
             myRigidBody.velocity = new Vector3(myRigidBody.velocity.x, 
                                                myRigidBody.velocity.y * Time.deltaTime * 52, 
@@ -98,7 +100,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void UpdateState() {
-        // If raycast pointing down collides player if grounded
+        // If raycast pointing down collides player is grounded
         if (Physics.Raycast(transform.position, Vector3.down, 1.1f) ||
             Physics.Raycast(transform.position + (Vector3.forward / 3), Vector3.down, 1.1f) ||
             Physics.Raycast(transform.position + (Vector3.back / 3), Vector3.down, 1.1f) ||
@@ -223,6 +225,7 @@ public class PlayerController : MonoBehaviour
         );
     }
 
+    // All hotkey functions change the slot index and the position of the indicator
     public void Hotkey1(InputAction.CallbackContext context) {
         selectedSlotIndex = 0;
         selectedSlot.transform.localPosition = new Vector3(-3.97f, 6.75f, 0);
@@ -247,13 +250,14 @@ public class PlayerController : MonoBehaviour
         selectedSlotIndex = 4;
         selectedSlot.transform.localPosition = new Vector3(4.03f, 6.75f, 0);
     }
-
+    // Old code
     public void DropItem(InputAction.CallbackContext context) {
         this.GetComponent<InventorySystem>().
         DropItem(this.GetComponent<InventorySystem>().inventory[selectedSlotIndex, 0], selectedSlotIndex);
     }
 
     public void SpawnKey() {
+        // Spawn the key in a random place around the player
         Instantiate(key, transform.position + new Vector3(UnityEngine.Random.Range(0, 1000), 
                                                         1000, 
                                                         UnityEngine.Random.Range(0, 1000)),
@@ -261,6 +265,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void loadTitleScreen() {
+        // Load the title screen (WOW)
         loadingScreen.SetActive(true);
         SceneManager.LoadScene("TitleScreen");
     }

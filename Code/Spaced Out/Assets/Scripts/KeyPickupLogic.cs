@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class KeyPickupLogic : MonoBehaviour
 {
+    // This is the same code as item pickup logic but with some small changes for the size difference
     public float height;
     public float heightOffset;
     public int amount;
     public GameObject player;
     public int id;
     public int pickupTimer;
-    // Start is called before the first frame update
     void Start()
     {
         // Set player object
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         // Generate height value using sine
@@ -50,13 +49,14 @@ public class KeyPickupLogic : MonoBehaviour
         pickupTimer -= 1;
         // If player has free slot and drop timer is up
         if (player.GetComponent<InventorySystem>().GetFirstEmptySlot() != -1 && pickupTimer <= 0) {
-            // If within 3 units of player start moving towards player by averaging Vector3's with bias towards my position
+            // If within 30 units of player start moving towards player by averaging Vector3's with bias towards my position
             if (Vector3.Distance(transform.position, player.transform.position) < 30) {
                 transform.position = (player.transform.position + (transform.position * 7)) / 8;
             }
-            // If withing 0.75 units of player update players inventory and destory self if correctly added to inventory
+            // If withing 25 units of player update players inventory and destory self if correctly added to inventory
             if (Vector3.Distance(transform.position, player.transform.position) < 25) {
                 if (player.GetComponent<InventorySystem>().AddItem(id, amount)) {
+                    player.GetComponent<PlayerController>().keyPickedUp = true;
                     Destroy(this.gameObject);
                 }
             }

@@ -609,7 +609,7 @@ ScriptsOnlyBuild:
     className: TextMeshProFloatingText
   - hash:
       serializedVersion: 2
-      Hash: bbd4d2fc068ebcc33ba772d2c0618e2f
+      Hash: b7523bd5729a40ff90b7228f123f902b
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerController
@@ -1287,7 +1287,7 @@ ScriptsOnlyBuild:
     className: PositionAsUV1
   - hash:
       serializedVersion: 2
-      Hash: 1a4041d89dd7e37bf221a1f210ed8595
+      Hash: 1d75f5a90d6170e8afa5712789ed2acf
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TextboxSystem
@@ -1511,4 +1511,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/TitleScreen.unity
   - Assets/SampleScene.unity
-  playerPath: /Users/oscarchilds/Documents/CODE/Level2Project/Builds/test.app
+  playerPath: /Users/oscarchilds/Documents/CODE/Level2Project/Builds/End.app
